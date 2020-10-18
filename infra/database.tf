@@ -13,7 +13,7 @@ data "aws_subnet_ids" "all" {
 data "aws_kms_secrets" "database_password" {
   secret {
     name    = "value"
-    payload = ""
+    payload = "AQICAHjR5RGWtqn1MwW7jMu/PP5MOj9wFL53fd8HCYf6zQB+TwEs3qDX/XnybfqXmeH1evSjAAAAcjBwBgkqhkiG9w0BBwagYzBhAgEAMFwGCSqGSIb3DQEHATAeBglghkgBZQMEAS4wEQQMqZWGiZbihgeBIbslAgEQgC/TGi6Wj0+13df+RDCzdaFnebyzV/ry2sJPidMVKftK82dfVqGrxjQpF7XxTTfh+A=="
 
     context {
       service = local.name
