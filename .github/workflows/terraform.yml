@@ -28,13 +28,6 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.ADMIN_AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.ADMIN_AWS_SECRET_ACCESS_KEY }}
 
-      - name: Terraform Format
-        run: terraform fmt -check
-        working-directory: infra
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.ADMIN_AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.ADMIN_AWS_SECRET_ACCESS_KEY }}
-
       - name: Terraform Plan
         run: terraform plan
         working-directory: infra
