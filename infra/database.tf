@@ -14,6 +14,7 @@ module "db" {
 
   engine                = "aurora-postgresql"
   engine_mode           = "serverless"
+  engine_version        = "10.7"
 
   replica_scale_enabled = false
   replica_count         = 0
