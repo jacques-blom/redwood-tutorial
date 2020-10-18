@@ -12,8 +12,9 @@ module "db" {
 
   name                            = "redwood-tutorial-aurora-db"
 
-  engine                = "aurora"
+  engine                = "aurora-postgresql"
   engine_mode           = "serverless"
+
   replica_scale_enabled = false
   replica_count         = 0
 
