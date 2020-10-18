@@ -23,6 +23,8 @@ module "db" {
   vpc_id                          = data.aws_vpc.default.id
   instance_type                   = ""
   apply_immediately               = true
+  allowed_security_groups         = [aws_security_group.public_access.id]
+  publicly_accessible = true
 
   scaling_configuration = {
     auto_pause               = true
