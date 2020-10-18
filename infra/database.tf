@@ -15,7 +15,7 @@ data "aws_kms_secrets" "database_password" {
     name    = "value"
     payload = "AQICAHjR5RGWtqn1MwW7jMu/PP5MOj9wFL53fd8HCYf6zQB+TwEs3qDX/XnybfqXmeH1evSjAAAAcjBwBgkqhkiG9w0BBwagYzBhAgEAMFwGCSqGSIb3DQEHATAeBglghkgBZQMEAS4wEQQMqZWGiZbihgeBIbslAgEQgC/TGi6Wj0+13df+RDCzdaFnebyzV/ry2sJPidMVKftK82dfVqGrxjQpF7XxTTfh+A=="
 
-    context {
+    context = {
       service = local.name
     }
   }
