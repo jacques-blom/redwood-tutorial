@@ -1,4 +1,4 @@
- module "kms_key" {
+module "kms_key" {
   source                  = "git::https://github.com/cloudposse/terraform-aws-kms-key.git?ref=0.7.0"
   namespace               = "redwood-tutorial"
   stage                   = "prod"
