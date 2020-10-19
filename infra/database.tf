@@ -18,7 +18,7 @@ data "aws_security_group" "default" {
 data "aws_kms_secrets" "database_password" {
   secret {
     name    = "value"
-    payload = "AQICAHjR5RGWtqn1MwW7jMu/PP5MOj9wFL53fd8HCYf6zQB+TwEs3qDX/XnybfqXmeH1evSjAAAAcjBwBgkqhkiG9w0BBwagYzBhAgEAMFwGCSqGSIb3DQEHATAeBglghkgBZQMEAS4wEQQMqZWGiZbihgeBIbslAgEQgC/TGi6Wj0+13df+RDCzdaFnebyzV/ry2sJPidMVKftK82dfVqGrxjQpF7XxTTfh+A=="
+    payload = "AQICAHglkqt28XQOry5l20Fd7eSn/CUc3Nd2gOMTKTNw2jspYgH/zvKIQLyZyyHB9fOcbln2AAAAcjBwBgkqhkiG9w0BBwagYzBhAgEAMFwGCSqGSIb3DQEHATAeBglghkgBZQMEAS4wEQQMAS8MsuDXd09iJLK1AgEQgC/mwhAbNZNDcbUg/vO5wf49fbKlbP0ZNkA550gm0dL9ukAbwiPbzAFVC+ujHnnXRA=="
 
     context = {
       service = local.name
@@ -29,8 +29,8 @@ data "aws_kms_secrets" "database_password" {
 resource "aws_ssm_parameter" "database_password" {
   name      = "/${local.name}/database/password"
   type      = "SecureString"
-  value     = "${data.aws_kms_secrets.database_password.plaintext["value"]}"
-  key_id    = "${aws_kms_key.ssm.arn}"
+  value     = data.aws_kms_secrets.database_password.plaintext["value"]
+  key_id    = aws_kms_key.ssm.arn
   overwrite = "true"
 }
 
@@ -44,11 +44,11 @@ module "db" {
   engine            = "postgres"
   engine_version    = "11.7"
   instance_class    = "db.t3.micro"
-  allocated_storage = 0.1
+  allocated_storage = 1
   storage_encrypted = false
 
   username = "app"
-  password = "${aws_ssm_parameter.database_password.value}"
+  password = aws_ssm_parameter.database_password.value
   port     = "5432"
 
   vpc_security_group_ids = [data.aws_security_group.default.id]

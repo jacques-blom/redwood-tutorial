@@ -22,14 +22,14 @@ jobs:
         uses: hashicorp/setup-terraform@v1
 
       - name: Terraform Init
-        run: terraform init -lock=false
+        run: terraform init
         working-directory: infra
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.ADMIN_AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.ADMIN_AWS_SECRET_ACCESS_KEY }}
 
       - name: Terraform Plan
-        run: terraform plan -lock=false
+        run: terraform plan
         working-directory: infra
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.ADMIN_AWS_ACCESS_KEY_ID }}
@@ -37,7 +37,7 @@ jobs:
 
       - name: Terraform Apply
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-        run: terraform apply -auto-approve -lock=false
+        run: terraform apply -auto-approve
         working-directory: infra
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.ADMIN_AWS_ACCESS_KEY_ID }}
