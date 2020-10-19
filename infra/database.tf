@@ -43,8 +43,8 @@ module "db" {
 
   engine            = "postgres"
   engine_version    = "11.7"
-  instance_class    = "db.t3.micro"
-  allocated_storage = 1
+  instance_class    = "db.t2.micro"
+  allocated_storage = 20
   storage_encrypted = false
 
   family = "postgres11"
