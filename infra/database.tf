@@ -39,7 +39,7 @@ module "db" {
   version = "~> 2.0"
 
   identifier = "redwood-tutorial"
-  name                            = "redwood-tutorial-postgres-db"
+  name       = "redwood-tutorial-postgres-db"
 
   engine            = "postgres"
   engine_version    = "11.7"
@@ -47,15 +47,12 @@ module "db" {
   allocated_storage = 0.1
   storage_encrypted = false
 
-  # kms_key_id        = "arm:aws:kms:<region>:<account id>:key/<kms key id>"
-  name = "redwood-tutorial"
-
   username = "app"
   password = "${aws_ssm_parameter.database_password.value}"
-  port = "5432"
+  port     = "5432"
 
   vpc_security_group_ids = [data.aws_security_group.default.id]
-  subnet_ids = data.aws_subnet_ids.all.ids
+  subnet_ids             = data.aws_subnet_ids.all.ids
 
   maintenance_window = "Sun:00:00-Sun:03:00"
   backup_window      = "03:00-06:00"
