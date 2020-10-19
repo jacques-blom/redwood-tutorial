@@ -39,7 +39,7 @@ module "db" {
   version = "~> 2.0"
 
   identifier = "redwood-tutorial"
-  name       = "redwood-tutorial-postgres-db"
+  name       = "redwood"
 
   engine            = "postgres"
   engine_version    = "11.7"
