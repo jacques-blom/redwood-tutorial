@@ -47,12 +47,13 @@ module "db" {
   allocated_storage = 20
   storage_encrypted = false
 
-  family = "postgres11"
+  family               = "postgres11"
   major_engine_version = "11"
 
-  username = "app"
-  password = aws_ssm_parameter.database_password.value
-  port     = "5432"
+  username            = "app"
+  password            = aws_ssm_parameter.database_password.value
+  port                = "5432"
+  publicly_accessible = true
 
   vpc_security_group_ids = [data.aws_security_group.default.id]
   subnet_ids             = data.aws_subnet_ids.all.ids
