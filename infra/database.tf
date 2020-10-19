@@ -48,7 +48,7 @@ module "db" {
   storage_encrypted = false
 
   family = "postgres11"
-  major_engine_version = "11.9"
+  major_engine_version = "11"
 
   username = "app"
   password = aws_ssm_parameter.database_password.value
