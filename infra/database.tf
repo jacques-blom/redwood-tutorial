@@ -47,6 +47,9 @@ module "db" {
   allocated_storage = 1
   storage_encrypted = false
 
+  family = "postgres11.9"
+  major_engine_version = "11.9"
+
   username = "app"
   password = aws_ssm_parameter.database_password.value
   port     = "5432"
