@@ -47,7 +47,7 @@ module "db" {
   allocated_storage = 1
   storage_encrypted = false
 
-  family = "postgres11.9"
+  family = "postgres11"
   major_engine_version = "11.9"
 
   username = "app"
